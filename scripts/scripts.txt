@@ -1,0 +1,79 @@
+create user "root" with encrypted password 'root';
+
+create database "cinema"
+  	encoding 'UTF8'
+  	LC_COLLATE = 'ru_RU.UTF-8'
+  	LC_CTYPE = 'ru_RU.UTF-8'
+  	template template0;
+
+
+create table "director" (
+	"id" SERIAL,
+	"firstName" varchar(255) not null,
+	"lastName" varchar(255) not null,
+	"dob" Date not null,
+	primary key ("id"),
+	unique ("firstName", "lastName", "dob")
+);
+
+create table "film" (
+	"id" SERIAL,
+	"name" varchar(255) not null,
+	"releaseDate" Date not null,
+	"directorId" int not null,
+	"genre" varchar(255) not null,
+	primary key ("id"),
+	unique ("name", "releaseDate"),
+	foreign key ("directorId") references "director"("id")
+);
+
+
+grant select, insert, update, delete
+on "director", "film"
+to "root";
+
+insert into "director" ("firstName", "lastName", "dob") values
+('Дмитрий', 'Нулевой', '1940-10-10'),
+('Никита', 'Первый', '1940-01-09'),
+('Максим', 'Второй', '1940-02-08'),
+('Рома', 'Третий', '1945-03-07'),
+('Паша', 'Четвертый', '1945-04-06'),
+('Коля', 'Пятый', '1960-05-05'),
+('Костя', 'Шестой', '1960-06-04'),
+('Яна', 'Седьмая', '1974-07-03'),
+('Карина', 'Восьмая', '1975-08-02'),
+('Настя', 'Девятая', '1976-09-01');
+
+insert into "film" ("name", "releaseDate", "directorId", "genre") values
+('Песчаная кошка', '1980-01-04', '1', 'horror'),
+('Канадская рысь', '1981-02-03', '1', 'comedy'),
+('Манул', '1982-03-02', '1', 'drama'),
+('Ченоногая кошка', '1983-04-01', '1', 'musical'),
+
+('Каракал', '1985-05-07', '2', 'documentary'),
+('Дымчатый леопард', '1986-06-06', '2', 'musical'),
+('Пампасская кошка', '1987-07-05', '2', 'drama'),
+
+('Бенгальская кошка', '1990-08-06', '3', 'comedy'),
+
+('Ягуарунди', '1991-09-11', '5', 'horror'),
+('Кошка-выболов', '1992-10-09', '5', 'comedy'),
+('Сервал', '1993-11-10', '5', 'drama'),
+
+('Калимантанский тигр', '1985-12-01', '6', 'documentary'),
+('Кодкод', '1986-01-02', '6', 'musical'),
+('Оцелот', '1987-02-01', '6', 'drama'),
+('Лесная кошка', '1988-03-12', '6', 'horror'),
+
+('Азиатский золотой', '1980-04-06', '7', 'horror'),
+('Гобийская серая', '1982-05-05', '7', 'comedy'),
+('Маргай', '1983-06-04', '7', 'drama'),
+
+('Суматранский ягуар', '1990-01-01', '9', 'documentary'),
+('Ржавый пятнистый кот', '1990-01-01', '9', 'musical'),
+('Сибирский хаски', '1991-07-07', '9', 'drama'),
+
+('Лабрадор ретривер', '1980-08-11', '10', 'documentary'),
+('Английский бульдог', '1981-09-10', '10', 'documentary'),
+('Мопс', '1982-10-09', '10', 'musical'),
+('Пудель', '1990-11-08', '10', 'musical');

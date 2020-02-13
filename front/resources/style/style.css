@@ -1,0 +1,273 @@
+/* 00. Basic */
+/* 01. logo*/
+/* 02. content modifiers */
+/* 03. director card */
+/* 04. controls */
+/* 05. helpers */
+
+/* 00. Basic */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    line-height: normal;
+}
+
+.header {
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #1C1D24;
+}
+
+.menu {
+    min-height: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+
+    background-color: #F57E45;
+}
+
+.content {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.footer {
+    height: 75px;
+    background-color: #1C1D24;
+}
+
+/* 01. logo */
+.logo {
+    font-size: 200%;
+    color: #DFE1E4;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo > .sublogo {
+    font-size: 50%;
+    color: #FFB178;
+}
+
+/* 02. content modifiers */
+.content.empty {
+    display: flex;
+    flex-direction: column;
+}
+
+.content.empty > .message {
+    min-width: 500px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.content.empty > .message.not_found {
+    background-color: #e66b37;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 150%;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.content.empty > .message.server_error {
+    background-color: #ad4052;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 150%;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.content.main_content{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    flex-grow: 1;
+    align-items: start;
+}
+
+/* 03. director card */
+.director_card {
+    padding: 0 10px 10px 10px;
+    background-color: #1C1D24;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0,0,0,.5);
+}
+
+.director_card_name {
+    padding: 10px 0;
+    font-size: 150%;
+    color: #FFB178;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.director_card_filmography > .title {
+    padding: 5px 5px;
+    border-radius: 3px 3px 0 0;
+    background-color: #FFB178;
+    font-size: 110%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 2px;
+}
+
+.director_card_filmography > .film {
+    padding: 3px 10px;
+    color: #000000;
+    font-size: 100%;
+    letter-spacing: 1px;
+    background-color: #ffffff;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.director_card_filmography > .film:last-child {
+    border-radius: 0 0 3px 3px;
+}
+
+.director_card_filmography > .film:hover {
+    background-color: #1C1D24;
+    color: #FFB178;
+    cursor: pointer;
+}
+
+/* 04. controls */
+input[type="text"].myui-form-control {
+    min-width: 250px;
+    padding: 10px;
+    border: 0;
+    height: 45px;
+    color: gray;
+    font-size: 150%;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="text"].myui-form-control.disabled {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+input[type="text"].myui-form-control.disabled::placeholder {
+    color: #FFB178;
+}
+
+input[type="text"].myui-form-control::placeholder {
+    text-align: center;
+    font-size: 70%;
+}
+
+button[type="button"].myui-form-control {
+    min-width: 100px;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.5);
+    outline: none;
+    color: #ffffff;
+}
+
+button[type="button"].myui-form-control.disabled {
+    background-color: rgba(0, 0, 0, .1);
+    color: #FFB178;
+}
+
+button[type="button"].myui-form-control.disabled:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+button[type="button"].myui-form-control:hover {
+    background-color: rgba(0,0,0,0.6);
+    transition-duration: 0.2s;
+    transition-property: background-color;
+}
+
+button[type="button"].myui-form-control:active {
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, .9);
+    transition-duration: 0.2s;
+    transition-property: "background-color", "box-shadow";
+}
+
+.myui-picker {
+    display: flex;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.myui-picker.disabled > .myui-picker-label {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.myui-picker.disabled > select {
+    background-color: rgba(0, 0, 0, .1);
+    color: #FFB178;
+}
+
+.myui-picker>.myui-picker-label {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px 0 0 5px;
+    background-color: rgba(0, 0, 0, .7);
+    text-align: center;
+    color: #FFB178;
+}
+
+.myui-picker>select {
+    min-width: 100px;
+    height: inherit;
+    padding: 10px;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    color: gray;
+    font-size: 150%;
+    outline: none;
+}
+
+.myui-picker > select option {
+    font-size: 70%;
+}
+
+.myui-checkbox {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.myui-checkbox.disabled {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.myui-checkbox input[type="checkbox"] {
+    box-sizing: border-box;
+    transform: scale(2);
+}
+
+.myui-checkbox .myui-checkbox-label {
+    margin-top: 5px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #FFB178;
+}
+
+/* 05. helpers */
+.mg-left-10 {
+    margin-left: 10px;
+}
+
+.mg-bot-10 {
+    margin-bottom: 10px;
+}
